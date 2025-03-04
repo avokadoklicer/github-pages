@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кликер Игра</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 50px;
+        }
+        #clicker {
+            font-size: 24px;
+            padding: 15px 30px;
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        #clicker:disabled {
+            background-color: #6c757d;
+        }
+        #counter {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+        #image {
+            display: none;
+            margin-top: 20px;
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <h1>Добро пожаловать в Кликер!</h1>
+    <button id="clicker">Кликни меня</button>
+    <p>Клики: <span id="counter">0</span></p>
+    <img id="image" src="https://via.placeholder.com/300" alt="Поздравляем!">
+
+    <script>
+        let counter = 0;
+        let randomClicks = Math.floor(Math.random() * 11) + 5; // От 5 до 15 кликов
+        const counterDisplay = document.getElementById("counter");
+        const clickerButton = document.getElementById("clicker");
+        const image = document.getElementById("image");
+
+        clickerButton.addEventListener("click", function() {
+            counter++;
+            counterDisplay.textContent = counter;
+            
+            if (counter >= randomClicks) {
+                image.style.display = "block";
+                clickerButton.disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>
